@@ -6,7 +6,7 @@
 
 - [x] UUID e. con
 
-- [ ] Speed e. con (I'm calling it "motion" because it makes more sense)
+- [x] Speed e. con (I'm calling it "motion" because it makes more sense)
 
 - [x] Command b. con
 
