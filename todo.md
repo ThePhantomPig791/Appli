@@ -2,13 +2,13 @@
 ###e. = entity, b. = block, b.e. = bi-entity, m. = meta, and so on
 <br>
 
-- [ ] Name e. con
+- [x] Name e. con
 
-- [ ] UUID e. con
+- [x] UUID e. con
 
-- [ ] Speed e. con
+- [ ] Speed e. con (I'm calling it "motion" because it makes more sense)
 
-- [ ] Command b. con
+- [x] Command b. con
 
 - [ ] Prevent block collision power
 

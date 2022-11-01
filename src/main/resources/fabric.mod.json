@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Appli",
-  "description": "Phantom's extension to A Power Library (the name stands for A Phantom Power Library, original I know).",
+  "description": "ThePhantomPig791's extension to A Power Library (the name stands for A Phantom Power Library, original I know).",
   "authors": [
     "ThePhantomPig791"
   ],
@@ -25,12 +25,15 @@
       "net.thephantompig791.appli.AppliClient"
     ]
   },
+  "mixins": [
+  ],
 
   "depends": {
     "fabricloader": ">=0.14.6",
     "fabric": "*",
     "minecraft": "~1.19",
-    "java": ">=17"
+    "java": ">=17",
+    "apoli": ">=2.5.1"
   },
   "suggests": {
     "another-mod": "*"
