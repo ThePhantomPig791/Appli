@@ -1,5 +1,5 @@
-#To-Do List
-###e. = entity, b. = block, b.e. = bi-entity, m. = meta, and so on
+# To-Do List
+### e. = entity, b. = block, b.e. = bi-entity, m. = meta, and so on
 <br>
 
 - [x] Name e. con
