@@ -18,6 +18,6 @@
 
 - [ ] Loop m. con
 
-- [ ] Teleport b.e. action
+- [ ] Teleport b.e. action (aka "swap positions")
 
 - [ ] Nbt b.e. con 

@@ -3,6 +3,7 @@ package net.thephantompig791.appli;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
+import net.thephantompig791.appli.power.factory.action.AppliBiEntityActions;
 import net.thephantompig791.appli.power.factory.condition.AppliBlockConditions;
 import net.thephantompig791.appli.power.factory.condition.AppliEntityConditions;
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ public class Appli implements ModInitializer{
 
         AppliEntityConditions.register();
         AppliBlockConditions.register();
+        AppliBiEntityActions.register();
 
 
         //yeah, i took this from apoli.java, sorry about that, but like everyone else did, so...
