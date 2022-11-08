@@ -25,3 +25,5 @@
 - [ ] Fix teleport actions' riding glitches
 
 - [ ] Nbt b.e. con 
+
+- [x] Execute command b.e. action
