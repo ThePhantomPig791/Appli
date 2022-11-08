@@ -41,33 +41,25 @@ public class AppliBiEntityActions {
                 .add("at", SerializableDataTypes.STRING)
                 .add("command", SerializableDataTypes.STRING),
                 (data, entities) -> {
-                    if (
-                            data.getString("as").equalsIgnoreCase("actor") || data.getString("as").equalsIgnoreCase("target")
-                            && data.getString("at").equalsIgnoreCase("actor") || data.getString("at").equalsIgnoreCase("target")
-                    ) {
-                        Entity actor = entities.getLeft(), target = entities.getRight();
+                    Entity actor = entities.getLeft(), target = entities.getRight();
 
-                        Entity commandExecutor = data.getString("as").equalsIgnoreCase("actor") ? actor : target;
-                        Entity commandPositionExecutor = data.getString("at").equalsIgnoreCase("actor") ? actor : target;
+                    Entity commandExecutor = data.getString("as").equalsIgnoreCase("actor") ? actor : target;
+                    Entity commandPositionExecutor = data.getString("at").equalsIgnoreCase("actor") ? actor : target;
 
-                        MinecraftServer server = commandExecutor.world.getServer();
-                        if(server != null) {
-                            boolean validOutput = !(commandExecutor instanceof ServerPlayerEntity) || ((ServerPlayerEntity)commandExecutor).networkHandler != null;
-                            ServerCommandSource source = new ServerCommandSource(
-                                    Apoli.config.executeCommand.showOutput && validOutput ? commandExecutor : CommandOutput.DUMMY,
-                                    commandPositionExecutor.getPos(),
-                                    commandPositionExecutor.getRotationClient(),
-                                    commandExecutor.world instanceof ServerWorld ? (ServerWorld)commandExecutor.world : null,
-                                    Apoli.config.executeCommand.permissionLevel,
-                                    commandExecutor.getName().getString(),
-                                    commandExecutor.getDisplayName(),
-                                    commandExecutor.world.getServer(),
-                                    commandExecutor);
-                            server.getCommandManager().executeWithPrefix(source, data.getString("command"));
-                        }
-                    }
-                    else {
-                        Appli.LOGGER.warn("An \"Execute Command\" bi-entity action is using an invalid input for the 'as' or 'at' field (or both); Must be either \"actor\" or \"target\"!);");
+                    MinecraftServer server = commandExecutor.world.getServer();
+                    if(server != null) {
+                        boolean validOutput = !(commandExecutor instanceof ServerPlayerEntity) || ((ServerPlayerEntity)commandExecutor).networkHandler != null;
+                        ServerCommandSource source = new ServerCommandSource(
+                                Apoli.config.executeCommand.showOutput && validOutput ? commandExecutor : CommandOutput.DUMMY,
+                                commandPositionExecutor.getPos(),
+                                commandPositionExecutor.getRotationClient(),
+                                commandExecutor.world instanceof ServerWorld ? (ServerWorld)commandExecutor.world : null,
+                                Apoli.config.executeCommand.permissionLevel,
+                                commandExecutor.getName().getString(),
+                                commandExecutor.getDisplayName(),
+                                commandExecutor.world.getServer(),
+                                commandExecutor);
+                        server.getCommandManager().executeWithPrefix(source, data.getString("command"));
                     }
                 }));
     }
