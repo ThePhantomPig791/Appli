@@ -20,6 +20,6 @@
 
 - [x] Swap positions b.e. action
 
-- [ ] Teleport b.e. action (actor teleport to target)
+- [x] Teleport b.e. action (actor teleport to target)
 
 - [ ] Nbt b.e. con 

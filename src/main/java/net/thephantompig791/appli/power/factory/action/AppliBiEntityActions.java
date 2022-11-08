@@ -19,6 +19,13 @@ public class AppliBiEntityActions {
                     target.setPosition(actor.getPos());
                     actor.setPosition(actorNewPos);
                 }));
+
+
+        register(new ActionFactory<>(Appli.identifier("teleport"), new SerializableData(),
+                (data, entities) -> {
+                    Entity actor = entities.getLeft(), target = entities.getRight();
+                    actor.setPosition(target.getPos());
+                }));
     }
 
     private static void register(ActionFactory<Pair<Entity, Entity>> actionFactory) {
