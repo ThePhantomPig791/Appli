@@ -22,4 +22,6 @@
 
 - [x] Teleport b.e. action (actor teleport to target)
 
+- [ ] Fix teleport actions' riding glitches
+
 - [ ] Nbt b.e. con 
