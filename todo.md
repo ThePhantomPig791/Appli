@@ -24,6 +24,8 @@
 
 - [ ] Fix teleport actions' riding glitches
 
+- [ ] Merge swap pos. and teleport
+
 - [ ] Nbt b.e. con 
 
 - [x] Execute command b.e. action
