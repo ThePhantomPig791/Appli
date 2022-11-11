@@ -21,20 +21,22 @@ import net.thephantompig791.appli.Appli;
 public class AppliBiEntityActions {
 
     public static void register() {
-        register(new ActionFactory<>(Appli.identifier("swap_positions"), new SerializableData(),
+
+        register(new ActionFactory<>(Appli.identifier("teleport"), new SerializableData()
+                .add("swap", SerializableDataTypes.BOOLEAN, false),
                 (data, entities) -> {
                     Entity actor = entities.getLeft(), target = entities.getRight();
-                    Vec3d actorNewPos = target.getPos();
-                    target.setPosition(actor.getPos());
-                    actor.setPosition(actorNewPos);
+                    if (data.getBoolean("swap")) {
+                        Vec3d actorNewPos = target.getPos();
+                        target.teleport(actor.getX(), actor.getY(), actor.getZ());
+                        actor.teleport(actorNewPos.x, actorNewPos.y, actorNewPos.z);
+                    }
+                    else {
+                        actor.setPosition(target.getPos());
+                        actor.teleport(target.getX(), target.getY(), target.getZ());
+                    }
                 }));
 
-
-        register(new ActionFactory<>(Appli.identifier("teleport"), new SerializableData(),
-                (data, entities) -> {
-                    Entity actor = entities.getLeft(), target = entities.getRight();
-                    actor.setPosition(target.getPos());
-                }));
 
         register(new ActionFactory<>(Appli.identifier("execute_command"), new SerializableData()
                 .add("as", SerializableDataTypes.STRING)

@@ -1,5 +1,5 @@
 # To-Do List
-### e. = entity, b. = block, b.e. = bi-entity, m. = meta, and so on
+### e. = entity, b. = block, b.e. = bi-entity, m. = meta, and so on (and so forth)
 <br>
 
 - [x] Name e. con
@@ -16,16 +16,16 @@
 
 - [ ] Modify potions power
 
-- [ ] Loop m. con
+- [ ] Loop m. action
 
 - [x] Swap positions b.e. action
 
 - [x] Teleport b.e. action (actor teleport to target)
 
-- [ ] Fix teleport actions' riding glitches
+- [x] Fix teleport actions' riding glitches
 
-- [ ] Merge swap pos. and teleport
+- [x] Merge swap pos. and teleport
 
-- [ ] Nbt b.e. con 
+- [x] Nbt b.e. con 
 
 - [x] Execute command b.e. action
