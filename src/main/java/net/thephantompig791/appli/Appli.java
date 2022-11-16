@@ -7,6 +7,7 @@ import net.thephantompig791.appli.power.factory.action.AppliBiEntityActions;
 import net.thephantompig791.appli.power.factory.condition.AppliBiEntityConditions;
 import net.thephantompig791.appli.power.factory.condition.AppliBlockConditions;
 import net.thephantompig791.appli.power.factory.condition.AppliEntityConditions;
+import net.thephantompig791.appli.titan_shifters_content.item.TitanShiftersItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +25,7 @@ public class Appli implements ModInitializer{
 
         AppliBiEntityActions.register();
 
+        TitanShiftersItems.register();
 
         //yeah, i took this from apoli.java, sorry about that, but like everyone else did, so...
         FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(modContainer -> {

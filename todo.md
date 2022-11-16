@@ -29,3 +29,5 @@
 - [x] Nbt b.e. con 
 
 - [x] Execute command b.e. action
+
+- [ ] Fix name e. con not working with colored names (I think)
