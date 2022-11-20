@@ -31,3 +31,5 @@
 - [x] Execute command b.e. action
 
 - [ ] Fix name e. con not working with colored names (I think)
+
+- [ ] Command line b.e. action
