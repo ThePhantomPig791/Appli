@@ -16,10 +16,10 @@ public class TitanShiftersItems {
             new CrossbowItem(new FabricItemSettings()));
 
     public static final Item EMPTY_INJECTION = register("empty_injection",
-            new CrossbowItem(new FabricItemSettings()));
+            new Item(new FabricItemSettings()));
 
     public static final Item TITAN_INJECTION = register("titan_injection",
-            new CrossbowItem(new FabricItemSettings()));
+            new Item(new FabricItemSettings()));
 
 
 
