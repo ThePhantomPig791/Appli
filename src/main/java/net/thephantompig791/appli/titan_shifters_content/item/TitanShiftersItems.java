@@ -15,12 +15,6 @@ public class TitanShiftersItems {
     public static final Item TITAN_SKIN_CROSSBOW = register("titan_skin_crossbow",
             new CrossbowItem(new FabricItemSettings()));
 
-    public static final Item EMPTY_INJECTION = register("empty_injection",
-            new Item(new FabricItemSettings()));
-
-    public static final Item TITAN_INJECTION = register("titan_injection",
-            new Item(new FabricItemSettings()));
-
 
 
     private static Item register(String name, Item item) {
