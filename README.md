@@ -10,7 +10,3 @@ Before using this, it's recommended you familarize yourself with the [Origins/Ap
 
 
 If you have questions/comments/concerns/suggestions/anything else, feel free to DM me on discord at `ThePhantomPig791#0003`.
-
-
-
-**This addon includes items for one of my large Origins datapacks, however, they will not appear in normal gameplay or the creative menu without the datapack installed.**
