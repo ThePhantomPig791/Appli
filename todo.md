@@ -32,4 +32,8 @@
 
 - [ ] Fix name e. con not working with colored names (I think)
 
-- [ ] Command line b.e. action
+- [ ] Command line b.e. action (hold on what does this do?? is it like a raycast that executes a command at a certain interval? that,,, can be done with a raycast action and a function for the command on interval field, so i'm not going to make this. hopefully it wasnt something else though bc i completely forget)
+
+- [ ] Resource pack power, possibly
+
+- [ ] Figura model power, possibly
