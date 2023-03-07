@@ -1,6 +1,0 @@
-{
-    "parent": "appli:item/titan_skin_crossbow",
-    "textures": {
-        "layer0": "appli:item/titan_skin_crossbow_firework"
-    }
-}
