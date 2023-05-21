@@ -37,3 +37,5 @@
 - [ ] Resource pack power, possibly
 
 - [ ] Figura model power, possibly
+
+- [ ] Use b. action and b.e. action (it would emulate a right click, maybe even two more for left click too)
