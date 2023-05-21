@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "appli:item/titan_skin_warhammer",
-		"particle": "appli:item/titan_skin_warhammer"
+		"0": "titan_shifter_megapack:item/titan_skin_warhammer",
+		"particle": "titan_shifter_megapack:item/titan_skin_warhammer"
 	},
 	"elements": [
 		{

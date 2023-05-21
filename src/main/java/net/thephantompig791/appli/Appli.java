@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 public class Appli implements ModInitializer{
     public static final String MOD_ID = "appli";
+    public static final String TS_MOD_ID = "titan_shifter_megapack";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static String VERSION = "";
 
@@ -24,6 +25,8 @@ public class Appli implements ModInitializer{
         AppliBiEntityConditions.register();
 
         AppliBiEntityActions.register();
+
+        //AppliPowerFactories.register();
 
         TitanShiftersItems.register();
 
