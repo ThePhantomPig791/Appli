@@ -30,6 +30,7 @@ public class ResourcePackPower extends Power {
             Appli.LOGGER.warn("Power '" + this.getType().getIdentifier() + "' does not have a valid pack url field.");
         this.url = url;
         this.priority = priority;
+
     }
 
 
