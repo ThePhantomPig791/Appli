@@ -51,18 +51,18 @@ dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}" exclude group: "net.fabricmc", module: "fabric-loader"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}" exclude group: "net.fabricmc", module: "fabric-loader"
 
-	modImplementation "com.github.eggohito:apoli:${project.apoli_version}"
-	modImplementation "com.github.apace100:calio:${project.calio_version}"
+	modImplementation "com.github.eggohito:apoli:${project.apoli_version}" exclude group: "net.fabricmc", module: "fabric-loader"
+	modImplementation "com.github.apace100:calio:${project.calio_version}" exclude group: "net.fabricmc", module: "fabric-loader"
 
 	// Adds an API dependency on the base cardinal components module (required by every other module)
-	modApi "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.ccb_version}"
-// Adds an implementation dependency on the entity module
-	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cce_version}"
+	modApi "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.ccb_version}" exclude group: "net.fabricmc", module: "fabric-loader"
+	// Adds an implementation dependency on the entity module
+	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cce_version}" exclude group: "net.fabricmc", module: "fabric-loader"
 }
 
 processResources {

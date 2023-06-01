@@ -1,18 +1,12 @@
 package net.thephantompig791.appli.client;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.util.InputUtil;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.Identifier;
 import net.thephantompig791.appli.Appli;
+import net.thephantompig791.appli.data.AppliDataTypes;
 import net.thephantompig791.appli.packet.AppliNetworkingConstants;
 import net.thephantompig791.appli.util.RadialMenu;
 import net.thephantompig791.appli.util.RadialMenuEntry;
@@ -58,8 +52,7 @@ public class RadialMenuEvents {
         });*/
 
         ClientPlayNetworking.registerGlobalReceiver(AppliNetworkingConstants.RADIAL_MENU_ACTION_TO_CLIENT, (client, handler, buf, responseSender) -> {
-            List<RadialMenuEntry> list = new ArrayList<>();
-            //somehow get the RadialMenuEntries and put it in 'list'
+            List<RadialMenuEntry> list = AppliDataTypes.RADIAL_MENU_ENTRIES.receive(buf);
             client.execute(() -> {
                 clientEntries.put(client, list);
             });
