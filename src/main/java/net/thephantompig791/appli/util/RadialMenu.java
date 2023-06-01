@@ -24,11 +24,20 @@ public class RadialMenu {
         double x = client.mouse.getX() - x0;
         double y = y0 - client.mouse.getY();
 
-        float angle = (float) Math.tan((x) / (y));
+        //add 90 degrees for each quadrant going clockwise based on the negative-ness of x and y
+        int angleToAdd = 0; //quadrant 1
+        if (!isNegative(x) && isNegative(y)) angleToAdd = 90; //quadrant 4
+        if (isNegative(x) && isNegative(y)) angleToAdd = 180; //quadrant 3
+        else if (isNegative(x) && !isNegative(y)) angleToAdd = 270; //quadrant 2
+        float angle = (float) Math.tan((Math.abs(x)) / (Math.abs(y))) + angleToAdd;
 
-        Appli.LOGGER.info("entry: " + Math.ceil(angle / angleInterval));
+        Appli.LOGGER.info("entry #: " + Math.ceil(angle / angleInterval));
+        Appli.LOGGER.info("entry action: " + entries.get((int) (Math.ceil(angle / angleInterval) - 1)).getEntityAction().getClass().descriptorString());
 
+        return entries.get((int) (Math.ceil(angle / angleInterval) - 1));
+    }
 
-        return null;
+    private boolean isNegative(double i) {
+        return i < 0.0;
     }
 }
