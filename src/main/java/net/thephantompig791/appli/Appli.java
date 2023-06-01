@@ -5,6 +5,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
 import net.thephantompig791.appli.power.AppliPowerFactories;
 import net.thephantompig791.appli.power.factory.action.AppliBiEntityActions;
+import net.thephantompig791.appli.power.factory.action.AppliEntityActions;
 import net.thephantompig791.appli.power.factory.condition.AppliBiEntityConditions;
 import net.thephantompig791.appli.power.factory.condition.AppliBlockConditions;
 import net.thephantompig791.appli.power.factory.condition.AppliEntityConditions;
@@ -25,6 +26,7 @@ public class Appli implements ModInitializer{
         AppliBlockConditions.register();
         AppliBiEntityConditions.register();
 
+        AppliEntityActions.register();
         AppliBiEntityActions.register();
 
         AppliPowerFactories.register();

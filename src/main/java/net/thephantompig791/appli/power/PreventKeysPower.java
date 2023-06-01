@@ -8,22 +8,23 @@ import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.LivingEntity;
 import net.thephantompig791.appli.Appli;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class DisableKeysPower extends Power {
+public class PreventKeysPower extends Power {
     private final List<Integer> keys;
 
     public static PowerFactory<?> getFactory() {
-        return new PowerFactory<>(Appli.identifier("disable_keys"),
+        return new PowerFactory<>(Appli.identifier("prevent_keys"),
                 new SerializableData()
-                        .add("keys", SerializableDataTypes.INTS, null),
+                        .add("keys", SerializableDataTypes.INTS, new ArrayList<>()),
                 data ->
                         (type, player) ->
-                                new DisableKeysPower(type, player, data.get("keys")))
+                                new PreventKeysPower(type, player, data.get("keys")))
                 .allowCondition();
     }
 
-    public DisableKeysPower(PowerType<?> type, LivingEntity entity, List<Integer> keys) {
+    public PreventKeysPower(PowerType<?> type, LivingEntity entity, List<Integer> keys) {
         super(type, entity);
         this.keys = keys;
     }

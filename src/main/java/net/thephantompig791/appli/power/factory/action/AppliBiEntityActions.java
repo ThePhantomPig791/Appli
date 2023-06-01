@@ -17,7 +17,6 @@ import net.minecraft.registry.Registry;
 import net.thephantompig791.appli.Appli;
 
 public class AppliBiEntityActions {
-
     public static void register() {
 
         register(new ActionFactory<>(Appli.identifier("teleport"), new SerializableData()

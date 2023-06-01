@@ -7,8 +7,8 @@ import net.thephantompig791.appli.Appli;
 
 public class AppliPowerFactories {
     public static void register() {
-        register(DisableKeysPower.getFactory());
-        register(DisableMousePower.createSimpleFactory(DisableMousePower::new, Appli.identifier("disable_mouse")));
+        register(PreventKeysPower.getFactory());
+        register(PreventMousePower.createSimpleFactory(PreventMousePower::new, Appli.identifier("prevent_mouse")));
     }
 
     private static void register(PowerFactory<?> p) {
