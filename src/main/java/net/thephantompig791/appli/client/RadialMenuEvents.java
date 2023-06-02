@@ -5,15 +5,14 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.network.PacketByteBuf;
 import net.thephantompig791.appli.Appli;
 import net.thephantompig791.appli.data.AppliDataTypes;
 import net.thephantompig791.appli.packet.AppliNetworkingConstants;
 import net.thephantompig791.appli.util.RadialMenu;
 import net.thephantompig791.appli.util.RadialMenuEntry;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Environment(EnvType.CLIENT)
 public class RadialMenuEvents {
@@ -25,6 +24,7 @@ public class RadialMenuEvents {
             public void onEndTick(MinecraftClient client) {
                 if (client.currentScreen != null) return;
                 RadialMenu radialMenu = new RadialMenu(clientEntries.get(client));
+                Appli.LOGGER.info(clientEntries.toString());
                 if (clientEntries.containsKey(client)) {
                     if (client.mouse.wasLeftButtonClicked()) {
                         client.mouse.lockCursor();
@@ -51,9 +51,11 @@ public class RadialMenuEvents {
         });*/
 
         ClientPlayNetworking.registerGlobalReceiver(AppliNetworkingConstants.RADIAL_MENU_ACTION_TO_CLIENT, (client, handler, buf, responseSender) -> {
-            List<RadialMenuEntry> list = AppliDataTypes.RADIAL_MENU_ENTRIES.receive(buf);
+            List<RadialMenuEntry> list = new ArrayList<>();
+            //read that collection !!! then save it to list !!!!! and then hopefully it will work!!!!!!!
             client.execute(() -> {
                 clientEntries.put(client, list);
+                Appli.LOGGER.info("received packet! ||| " + list);
             });
         });
     }
