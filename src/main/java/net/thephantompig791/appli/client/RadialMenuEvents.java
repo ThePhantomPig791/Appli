@@ -1,10 +1,13 @@
 package net.thephantompig791.appli.client;
 
+import com.google.common.collect.Lists;
+import io.github.apace100.apoli.power.factory.action.ActionFactory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.thephantompig791.appli.Appli;
 import net.thephantompig791.appli.data.AppliDataTypes;
@@ -24,7 +27,7 @@ public class RadialMenuEvents {
             public void onEndTick(MinecraftClient client) {
                 if (client.currentScreen != null) return;
                 RadialMenu radialMenu = new RadialMenu(clientEntries.get(client));
-                Appli.LOGGER.info(clientEntries.toString());
+                if (!clientEntries.isEmpty()) Appli.LOGGER.info(clientEntries.toString());
                 if (clientEntries.containsKey(client)) {
                     if (client.mouse.wasLeftButtonClicked()) {
                         client.mouse.lockCursor();
@@ -52,7 +55,10 @@ public class RadialMenuEvents {
 
         ClientPlayNetworking.registerGlobalReceiver(AppliNetworkingConstants.RADIAL_MENU_ACTION_TO_CLIENT, (client, handler, buf, responseSender) -> {
             List<RadialMenuEntry> list = new ArrayList<>();
-            //read that collection !!! then save it to list !!!!! and then hopefully it will work!!!!!!!
+            //List<RadialMenuEntry> list = buf.readCollection(Lists::newArrayListWithCapacity, buffer -> {
+                //return new RadialMenuEntry(buffer.readItemStack(), ActionFactory.read(buffer));
+            //});
+            //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
             client.execute(() -> {
                 clientEntries.put(client, list);
                 Appli.LOGGER.info("received packet! ||| " + list);

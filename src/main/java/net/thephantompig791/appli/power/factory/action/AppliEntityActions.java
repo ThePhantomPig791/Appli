@@ -25,7 +25,10 @@ public class AppliEntityActions {
                     if (entity.world.isClient) return;
                     PacketByteBuf buf = PacketByteBufs.create();
                     Collection<RadialMenuEntry> collection = data.get("entries");
-                    buf.writeCollection(collection, (packetByteBuf, radialMenuEntry) -> {});
+                    buf.writeCollection(collection, (buffer, radialMenuEntry) -> {
+                        buffer.writeItemStack(radialMenuEntry.getStack());
+                        radialMenuEntry.getEntityAction().write(buffer);
+                    });
 
                     Appli.LOGGER.info(data.get("entries") + "|||" + collection);
                     ServerPlayNetworking.send((ServerPlayerEntity) entity, AppliNetworkingConstants.RADIAL_MENU_ACTION_TO_CLIENT, buf);
