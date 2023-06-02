@@ -11,7 +11,6 @@ import net.thephantompig791.appli.packet.AppliNetworkingConstants;
 import net.thephantompig791.appli.util.RadialMenu;
 import net.thephantompig791.appli.util.RadialMenuEntry;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
