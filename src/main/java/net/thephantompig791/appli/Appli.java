@@ -1,5 +1,6 @@
 package net.thephantompig791.appli;
 
+import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
@@ -9,6 +10,7 @@ import net.thephantompig791.appli.power.factory.action.AppliEntityActions;
 import net.thephantompig791.appli.power.factory.condition.AppliBiEntityConditions;
 import net.thephantompig791.appli.power.factory.condition.AppliBlockConditions;
 import net.thephantompig791.appli.power.factory.condition.AppliEntityConditions;
+import net.thephantompig791.appli.server.RadialMenuServer;
 import net.thephantompig791.appli.titan_shifters_content.item.TitanShiftersItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

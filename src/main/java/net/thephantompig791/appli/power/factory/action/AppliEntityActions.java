@@ -12,9 +12,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.thephantompig791.appli.Appli;
 import net.thephantompig791.appli.data.AppliDataTypes;
 import net.thephantompig791.appli.packet.AppliNetworkingConstants;
-import net.thephantompig791.appli.util.RadialMenuEntry;
-
-import java.util.Collection;
 
 public class AppliEntityActions {
     public static void register() {
@@ -24,14 +21,8 @@ public class AppliEntityActions {
                     if (!entity.isPlayer()) return;
                     if (entity.world.isClient) return;
                     PacketByteBuf buf = PacketByteBufs.create();
-                    Collection<RadialMenuEntry> collection = data.get("entries");
-                    buf.writeCollection(collection, (buffer, radialMenuEntry) -> {
-                        buffer.writeItemStack(radialMenuEntry.getStack());
-                        radialMenuEntry.getEntityAction().write(buffer);
-                    });
-
-                    Appli.LOGGER.info(data.get("entries") + "|||" + collection);
-                    ServerPlayNetworking.send((ServerPlayerEntity) entity, AppliNetworkingConstants.RADIAL_MENU_ACTION_TO_CLIENT, buf);
+                    AppliDataTypes.RADIAL_MENU_ENTRIES.send(buf, data.get("entries"));
+                    ServerPlayNetworking.send((ServerPlayerEntity) entity, AppliNetworkingConstants.RADIAL_MENU_SERVER_TO_CLIENT, buf);
                 }));
     }
 
