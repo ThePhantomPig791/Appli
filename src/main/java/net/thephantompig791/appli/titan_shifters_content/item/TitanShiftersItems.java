@@ -16,11 +16,11 @@ public class TitanShiftersItems {
             new TitanSkinCrossbowItem(new FabricItemSettings()));
 
     public static final Item TITAN_INJECTION = register("titan_injection",
-            new TitanSkinCrossbowItem(new FabricItemSettings()));
+            new Item(new FabricItemSettings()));
 
     /*
     public static final Item EMPTY_INJECTION = register("empty_injection",
-            new TitanSkinCrossbowItem(new FabricItemSettings()));
+            new Item(new FabricItemSettings()));
     */
 
 

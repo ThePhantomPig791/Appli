@@ -1,18 +1,18 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "titan_shifter_megapack:empty_injection"
+    "layer0": "titan_shifter_megapack:item/empty_injection"
   },
 
   "overrides": [
-    {"predicate": {"custom_model_data":1}, "model": "titan_shifter_megapack:filled_titan_injection"},
-    {"predicate": {"custom_model_data":2}, "model": "titan_shifter_megapack:filled_titan_injection"},
-    {"predicate": {"custom_model_data":3}, "model": "titan_shifter_megapack:filled_titan_injection"},
-    {"predicate": {"custom_model_data":4}, "model": "titan_shifter_megapack:filled_titan_injection"},
-    {"predicate": {"custom_model_data":5}, "model": "titan_shifter_megapack:filled_titan_injection"},
-    {"predicate": {"custom_model_data":6}, "model": "titan_shifter_megapack:filled_titan_injection"},
-    {"predicate": {"custom_model_data":7}, "model": "titan_shifter_megapack:filled_titan_injection"},
-    {"predicate": {"custom_model_data":8}, "model": "titan_shifter_megapack:filled_titan_injection"},
-    {"predicate": {"custom_model_data":9}, "model": "titan_shifter_megapack:filled_titan_injection"}
+    {"predicate": {"custom_model_data":1}, "model": "titan_shifter_megapack:item/filled_titan_injection"},
+    {"predicate": {"custom_model_data":2}, "model": "titan_shifter_megapack:item/filled_titan_injection"},
+    {"predicate": {"custom_model_data":3}, "model": "titan_shifter_megapack:item/filled_titan_injection"},
+    {"predicate": {"custom_model_data":4}, "model": "titan_shifter_megapack:item/filled_titan_injection"},
+    {"predicate": {"custom_model_data":5}, "model": "titan_shifter_megapack:item/filled_titan_injection"},
+    {"predicate": {"custom_model_data":6}, "model": "titan_shifter_megapack:item/filled_titan_injection"},
+    {"predicate": {"custom_model_data":7}, "model": "titan_shifter_megapack:item/filled_titan_injection"},
+    {"predicate": {"custom_model_data":8}, "model": "titan_shifter_megapack:item/filled_titan_injection"},
+    {"predicate": {"custom_model_data":9}, "model": "titan_shifter_megapack:item/filled_titan_injection"}
   ]
 }
