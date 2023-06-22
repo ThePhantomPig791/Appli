@@ -30,17 +30,17 @@ public class RadialMenuClient {
                 if (client.mouse.wasLeftButtonClicked()) {
                     Appli.LOGGER.info("mouse pos: (" + client.mouse.getX() + ", " + client.mouse.getY() + ")");
 
-                    if (radialMenu.getRadialMenuEntry(client) == null) return;
-                    radialMenu.getRadialMenuEntry(client).getEntityAction().accept(client.player);
+                    if (radialMenu.click(client) == null) return;
+                    radialMenu.click(client).getEntityAction().accept(client.player);
 
                     PacketByteBuf buf = PacketByteBufs.create();
-                    ApoliDataTypes.ENTITY_ACTION.send(buf, radialMenu.getRadialMenuEntry(client).getEntityAction());
+                    radialMenu.click(client).getEntityAction().write(buf);
                     ClientPlayNetworking.send(AppliNetworkingConstants.RADIAL_MENU_CLIENT_TO_SERVER, buf);
 
                     client.mouse.lockCursor();
                     clientEntries.remove(client);
 
-                    Appli.LOGGER.info("clicked out of radial menu, action: " + radialMenu.getRadialMenuEntry(client).getEntityAction());
+                    Appli.LOGGER.info("clicked out of radial menu, action: " + radialMenu.click(client).getEntityAction());
                 } else {
                     client.mouse.unlockCursor();
                 }
