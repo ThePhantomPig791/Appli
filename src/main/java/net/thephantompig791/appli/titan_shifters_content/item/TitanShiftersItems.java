@@ -16,12 +16,7 @@ public class TitanShiftersItems {
             new TitanSkinCrossbowItem(new FabricItemSettings()));
 
     public static final Item TITAN_INJECTION = register("titan_injection",
-            new Item(new FabricItemSettings()));
-
-    /*
-    public static final Item EMPTY_INJECTION = register("empty_injection",
-            new Item(new FabricItemSettings()));
-    */
+            new Item(new FabricItemSettings().maxCount(1)));
 
 
 

@@ -9,6 +9,7 @@ public class AppliPowerFactories {
     public static void register() {
         register(PreventKeysPower.getFactory());
         register(PreventMousePower.createSimpleFactory(PreventMousePower::new, Appli.identifier("prevent_mouse")));
+        register(ModifyModelPartsPower.getFactory());
     }
 
     private static void register(PowerFactory<?> p) {
