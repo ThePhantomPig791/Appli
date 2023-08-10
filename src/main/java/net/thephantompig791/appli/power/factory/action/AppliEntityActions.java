@@ -5,6 +5,7 @@ import io.github.apace100.apoli.registry.ApoliRegistries;
 import io.github.apace100.calio.data.SerializableData;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.registry.Registry;
@@ -19,6 +20,7 @@ public class AppliEntityActions {
                 .add("entries", AppliDataTypes.RADIAL_MENU_ENTRIES),
                 (data, entity) -> {
                     if (!entity.isPlayer()) return;
+                    MinecraftClient.getInstance().mouse.unlockCursor();
                     if (entity.world.isClient) return;
                     PacketByteBuf buf = PacketByteBufs.create();
                     AppliDataTypes.RADIAL_MENU_ENTRIES.send(buf, data.get("entries"));

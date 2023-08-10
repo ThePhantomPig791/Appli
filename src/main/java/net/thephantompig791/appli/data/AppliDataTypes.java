@@ -4,8 +4,6 @@ import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataType;
 import io.github.apace100.calio.data.SerializableDataTypes;
-import net.minecraft.client.model.ModelPart;
-import net.minecraft.data.client.Model;
 import net.thephantompig791.appli.util.ModelPartTransformation;
 import net.thephantompig791.appli.util.RadialMenuEntry;
 
@@ -16,15 +14,18 @@ public class AppliDataTypes {
             RadialMenuEntry.class,
             new SerializableData()
                     .add("item", SerializableDataTypes.ITEM_STACK)
-                    .add("entity_action", ApoliDataTypes.ENTITY_ACTION),
+                    .add("entity_action", ApoliDataTypes.ENTITY_ACTION)
+                    .add("distance", SerializableDataTypes.INT, -1),
             data -> new RadialMenuEntry(
                     data.get("item"),
-                    data.get("entity_action")
+                    data.get("entity_action"),
+                    data.get("distance")
             ),
             (data, inst) -> {
                 SerializableData.Instance dataInst = data.new Instance();
                 dataInst.set("item", inst.getStack());
                 dataInst.set("entity_action", inst.getEntityAction());
+                dataInst.set("distance", inst.getDistance());
                 return dataInst;
             });
 

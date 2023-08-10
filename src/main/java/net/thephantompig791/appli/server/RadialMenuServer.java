@@ -17,6 +17,7 @@ public class RadialMenuServer {
             Appli.LOGGER.info("(not in execute) received packet on server!" + action);
             server.execute(() -> {
                 action.accept(player);
+                player.closeHandledScreen();
                 Appli.LOGGER.info("received packet on server!" + action);
             });
         });
