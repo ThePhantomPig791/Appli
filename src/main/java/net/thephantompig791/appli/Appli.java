@@ -1,6 +1,5 @@
 package net.thephantompig791.appli;
 
-import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
@@ -32,6 +31,8 @@ public class Appli implements ModInitializer {
         AppliBiEntityActions.register();
 
         AppliPowerFactories.register();
+
+        RadialMenuServer.init();
 
         TitanShiftersItems.register();
 

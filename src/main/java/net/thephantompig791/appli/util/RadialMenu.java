@@ -15,8 +15,8 @@ public class RadialMenu {
         this.entries = entries;
     }
 
-    public void draw(MinecraftClient client) {
-        positionEntries(client);
+    public void draw(MinecraftClient client, long elapsedTime) {
+        positionEntries(client, elapsedTime);
         entries.forEach((radialMenuEntry -> {
             ButtonWidget button = radialMenuEntry.getButton();
             button.setPos(
@@ -27,7 +27,7 @@ public class RadialMenu {
         }));
     }
 
-    private void positionEntries(MinecraftClient client) {
+    private void positionEntries(MinecraftClient client, long elapsedTime) {
         float angleInterval = 360f / entries.size();
         for (int i = 0; i < entries.size(); i++) {
             float angle = angleInterval * i;
@@ -35,7 +35,11 @@ public class RadialMenu {
                     client.getWindow().getScaledWidth() / 2f,
                     client.getWindow().getScaledHeight() / 2f
             );
-            int distance = entries.get(i).getDistance() != -1 ? entries.get(i).getDistance() : client.getWindow().getScaledHeight() / 4;
+
+            int maxDistance = entries.get(i).getDistance() != -1 ? entries.get(i).getDistance() : client.getWindow().getScaledHeight() / 4;
+            float velocity = entries.get(i).getVelocity() != -1 ? entries.get(i).getVelocity() : maxDistance / 3f;
+            float distance = velocity * elapsedTime < maxDistance ? velocity * elapsedTime : maxDistance;
+
             Vector2f position = getPosFromAngle(angle, distance, center);
             entries.get(i).setPosition(new Vector2f(position.getX() - 8f, position.getY() - 10f));
         }

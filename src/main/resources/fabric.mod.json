@@ -23,9 +23,6 @@
     ],
     "client": [
       "net.thephantompig791.appli.AppliClient"
-    ],
-    "server": [
-      "net.thephantompig791.appli.AppliServer"
     ]
   },
   "mixins": [

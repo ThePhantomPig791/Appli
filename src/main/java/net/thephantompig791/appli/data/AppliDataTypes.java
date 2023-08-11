@@ -15,17 +15,20 @@ public class AppliDataTypes {
             new SerializableData()
                     .add("item", SerializableDataTypes.ITEM_STACK)
                     .add("entity_action", ApoliDataTypes.ENTITY_ACTION)
-                    .add("distance", SerializableDataTypes.INT, -1),
+                    .add("distance", SerializableDataTypes.INT, -1)
+                    .add("velocity", SerializableDataTypes.INT, -1),
             data -> new RadialMenuEntry(
                     data.get("item"),
                     data.get("entity_action"),
-                    data.get("distance")
+                    data.get("distance"),
+                    data.get("velocity")
             ),
             (data, inst) -> {
                 SerializableData.Instance dataInst = data.new Instance();
                 dataInst.set("item", inst.getStack());
                 dataInst.set("entity_action", inst.getEntityAction());
                 dataInst.set("distance", inst.getDistance());
+                dataInst.set("velocity", inst.getVelocity());
                 return dataInst;
             });
 

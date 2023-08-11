@@ -9,7 +9,7 @@ import net.thephantompig791.appli.util.RadialMenu;
 
 @Environment(EnvType.CLIENT)
 public class RadialMenuScreen extends Screen {
-    private long elapsedTime;
+    private int elapsedTime;
 
     private final RadialMenu radialMenu;
 
@@ -19,7 +19,7 @@ public class RadialMenuScreen extends Screen {
         elapsedTime = 0;
     }
 
-    public double getElapsedTime() {
+    public int getElapsedTime() {
         return elapsedTime;
     }
 
@@ -29,8 +29,8 @@ public class RadialMenuScreen extends Screen {
 
     @Override
     public void tick() {
-        elapsedTime += 0.05;
-        radialMenu.draw(this.client);
+        elapsedTime += 1;
+        radialMenu.draw(this.client, elapsedTime);
     }
 
     @Override
