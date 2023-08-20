@@ -2,7 +2,8 @@ package net.thephantompig791.appli.titan_shifters_content.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.thephantompig791.appli.Appli;
 
@@ -20,7 +21,7 @@ public class TitanShiftersItems {
 
 
     private static Item register(String name, Item item) {
-        return Registry.register(Registry.ITEM, new Identifier(Appli.TS_MOD_ID, name), item);
+        return Registry.register(Registries.ITEM, new Identifier(Appli.TS_MOD_ID, name), item);
     }
 
     public static void register() {}

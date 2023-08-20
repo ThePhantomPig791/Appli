@@ -19,8 +19,10 @@ public class RadialMenu {
         positionEntries(client, elapsedTime);
         entries.forEach((radialMenuEntry -> {
             ButtonWidget button = radialMenuEntry.getButton();
-            button.x = Math.round(radialMenuEntry.getPosition().getX());
-            button.y = Math.round(radialMenuEntry.getPosition().getY() - 1);
+            button.setPos(
+                    Math.round(radialMenuEntry.getPosition().getX()),
+                    Math.round(radialMenuEntry.getPosition().getY() - 1)
+            );
             radialMenuEntry.setButton(button);
         }));
     }
