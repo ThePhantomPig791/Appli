@@ -37,7 +37,6 @@ public class RadialMenuEntry {
                     PacketByteBuf buf = PacketByteBufs.create();
                     this.action.write(buf);
                     ClientPlayNetworking.send(AppliNetworkingConstants.RADIAL_MENU_CLIENT_TO_SERVER, buf);
-                    Appli.LOGGER.info(this.stack.getName().getString());
                 }),
                 (button, matrices, mouseX, mouseY) -> stack.getName().getString()
         );
