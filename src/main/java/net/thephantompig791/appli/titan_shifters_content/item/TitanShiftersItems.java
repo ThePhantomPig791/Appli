@@ -18,6 +18,15 @@ public class TitanShiftersItems {
     public static final Item TITAN_INJECTION = register("titan_injection",
             new Item(new FabricItemSettings().maxCount(1)));
 
+    public static final Item TITAN_SADDLE_MOUNT = register("titan_saddle_mount",
+        new Item(new FabricItemSettings().maxCount(1)));
+
+    public static final Item TITAN_BARREL_MOUNT = register("titan_barrel_mount",
+            new Item(new FabricItemSettings().maxCount(1)));
+
+    public static final Item TITAN_RIFLE_MOUNT = register("titan_rifle_mount",
+            new Item(new FabricItemSettings().maxCount(1)));
+
 
 
     private static Item register(String name, Item item) {
