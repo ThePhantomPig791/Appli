@@ -49,8 +49,8 @@ public class RadialMenuScreen extends Screen {
             this.radialMenu.getEntries().forEach(radialMenuEntry -> {
                 client.getItemRenderer().renderInGui(
                         radialMenuEntry.getStack(),
-                        Math.round(radialMenuEntry.getPosition().getX()),
-                        Math.round(radialMenuEntry.getPosition().getY())
+                        Math.round(radialMenuEntry.getPosition().x()),
+                        Math.round(radialMenuEntry.getPosition().y())
                 );
             });
             this.setZOffset(0);
