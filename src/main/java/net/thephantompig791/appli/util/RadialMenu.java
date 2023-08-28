@@ -1,8 +1,15 @@
 package net.thephantompig791.appli.util;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.util.math.Vector2f;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.text.Text;
+import net.thephantompig791.appli.packet.AppliNetworkingConstants;
 import oshi.util.tuples.Pair;
 
 import java.util.List;
@@ -15,13 +22,24 @@ public class RadialMenu {
         this.entries = entries;
     }
 
+    @Environment(EnvType.CLIENT)
     public void draw(MinecraftClient client, long elapsedTime) {
         positionEntries(client, elapsedTime);
         entries.forEach((radialMenuEntry -> {
-            ButtonWidget button = radialMenuEntry.getButton();
+            ButtonWidget button = ButtonWidget.builder(
+                    Text.empty(),
+                    (widget -> {
+                        PacketByteBuf buf = PacketByteBufs.create();
+                        radialMenuEntry.getEntityAction().write(buf);
+                        ClientPlayNetworking.send(AppliNetworkingConstants.RADIAL_MENU_CLIENT_TO_SERVER, buf);
+                    }))
+                .position(-100, 0)
+                .size(16, 20)
+                .tooltip(Tooltip.of(Text.literal(radialMenuEntry.getStack().getName().getString())))
+                .build();
             button.setPos(
-                    Math.round(radialMenuEntry.getPosition().getX()),
-                    Math.round(radialMenuEntry.getPosition().getY() - 1)
+                    Math.round(radialMenuEntry.getPosition().x()),
+                    Math.round(radialMenuEntry.getPosition().y() - 1)
             );
             radialMenuEntry.setButton(button);
         }));
@@ -41,13 +59,13 @@ public class RadialMenu {
             float distance = velocity * elapsedTime < maxDistance ? velocity * elapsedTime : maxDistance;
 
             Vector2f position = getPosFromAngle(angle, distance, center);
-            entries.get(i).setPosition(new Vector2f(position.getX() - 8f, position.getY() - 10f));
+            entries.get(i).setPosition(new Vector2f(position.x() - 8f, position.y() - 10f));
         }
     }
 
 
     public static Vector2f getPosFromAngle(float angle, float distance, Vector2f center) {
-        return new Vector2f((float) (center.getX() + distance * Math.cos(angle * (Math.PI / 180))), (float) (center.getY() + distance * Math.sin(angle * (Math.PI / 180))));
+        return new Vector2f((float) (center.x() + distance * Math.cos(angle * (Math.PI / 180))), (float) (center.y() + distance * Math.sin(angle * (Math.PI / 180))));
     }
 
     public static double getAngleFromPos(Pair<Double, Double> position, Pair<Double, Double> center) {
