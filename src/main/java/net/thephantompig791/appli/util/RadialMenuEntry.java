@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 
 public class RadialMenuEntry {
     private final ItemStack stack;
-    private final ActionFactory<LivingEntity>.Instance action;
+    private ActionFactory<LivingEntity>.Instance action;
     private Vector2f position;
     private final int distance;
     private final int velocity;
@@ -32,6 +32,9 @@ public class RadialMenuEntry {
     public ActionFactory<LivingEntity>.Instance getEntityAction() {
         return action;
     }
+    public void setEntityAction(ActionFactory<LivingEntity>.Instance action) {
+        this.action = action;
+    }
 
     public Vector2f getPosition() {
         return position;
@@ -49,12 +52,10 @@ public class RadialMenuEntry {
         return velocity;
     }
 
-    @Environment(EnvType.CLIENT)
     public ButtonWidget getButton() {
         return button;
     }
 
-    @Environment(EnvType.CLIENT)
     public void setButton(ButtonWidget button) {
         this.button = button;
     }

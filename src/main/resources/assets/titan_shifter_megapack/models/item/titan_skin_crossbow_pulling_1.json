@@ -1,6 +1,0 @@
-{
-    "parent": "titan_shifter_megapack:item/titan_skin_crossbow",
-    "textures": {
-        "layer0": "titan_shifter_megapack:item/titan_skin_crossbow_pulling_1"
-    }
-}

@@ -27,16 +27,19 @@ public class RadialMenu {
         positionEntries(client, elapsedTime);
         entries.forEach((radialMenuEntry -> {
             ButtonWidget button = ButtonWidget.builder(
-                    Text.empty(),
-                    (widget -> {
-                        PacketByteBuf buf = PacketByteBufs.create();
-                        radialMenuEntry.getEntityAction().write(buf);
-                        ClientPlayNetworking.send(AppliNetworkingConstants.RADIAL_MENU_CLIENT_TO_SERVER, buf);
-                    }))
-                .position(-100, 0)
-                .size(16, 20)
-                .tooltip(Tooltip.of(Text.literal(radialMenuEntry.getStack().getName().getString())))
-                .build();
+                            Text.empty(),
+                            (widget -> {
+                                if (radialMenuEntry.getEntityAction() != null) {
+                                    PacketByteBuf buf = PacketByteBufs.create();
+                                    radialMenuEntry.getEntityAction().write(buf);
+                                    ClientPlayNetworking.send(AppliNetworkingConstants.RADIAL_MENU_CLIENT_TO_SERVER, buf);
+                                    radialMenuEntry.setEntityAction(null);
+                                }
+                            }))
+                    .position(-100, 0)
+                    .size(16, 20)
+                    .tooltip(Tooltip.of(Text.literal(radialMenuEntry.getStack().getName().getString())))
+                    .build();
             button.setPos(
                     Math.round(radialMenuEntry.getPosition().x()),
                     Math.round(radialMenuEntry.getPosition().y() - 1)

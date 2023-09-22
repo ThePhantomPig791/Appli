@@ -35,23 +35,26 @@ public class RadialMenuScreen extends Screen {
 
     @Override
     public void init() {
+        radialMenu.draw(this.client, elapsedTime);
         radialMenu.getEntries().forEach(entry -> {
-            entry.setButton(entry.getButton());
-            addDrawableChild(entry.getButton());
+            if (entry.getButton() != null) addDrawableChild(entry.getButton());
+            //Appli.LOGGER.info("wah | " + entry.getButton() + " | " + children());
         });
     }
 
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        super.render(matrices, mouseX, mouseY, delta);
+        //super.render(matrices, mouseX, mouseY, delta);
         if (client != null) {
             this.setZOffset(100);
             this.radialMenu.getEntries().forEach(radialMenuEntry -> {
+                if (radialMenuEntry.getButton() != null) radialMenuEntry.getButton().render(matrices, mouseX, mouseY, delta);
                 client.getItemRenderer().renderInGui(
                         radialMenuEntry.getStack(),
                         Math.round(radialMenuEntry.getPosition().x()),
                         Math.round(radialMenuEntry.getPosition().y())
                 );
+                addDrawableChild(radialMenuEntry.getButton());
             });
             this.setZOffset(0);
         }

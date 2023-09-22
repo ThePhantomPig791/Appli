@@ -20,8 +20,10 @@ public class AppliEntityActions {
                 .add("entries", AppliDataTypes.RADIAL_MENU_ENTRIES),
                 (data, entity) -> {
                     if (!entity.isPlayer()) return;
-                    MinecraftClient.getInstance().mouse.unlockCursor();
-                    if (entity.world.isClient) return;
+                    if (entity.world.isClient) {
+                        MinecraftClient.getInstance().mouse.unlockCursor();
+                        return;
+                    }
                     PacketByteBuf buf = PacketByteBufs.create();
                     AppliDataTypes.RADIAL_MENU_ENTRIES.send(buf, data.get("entries"));
                     ServerPlayNetworking.send((ServerPlayerEntity) entity, AppliNetworkingConstants.RADIAL_MENU_SERVER_TO_CLIENT, buf);

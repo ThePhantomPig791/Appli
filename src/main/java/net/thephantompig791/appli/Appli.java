@@ -10,13 +10,12 @@ import net.thephantompig791.appli.power.factory.condition.AppliBiEntityCondition
 import net.thephantompig791.appli.power.factory.condition.AppliBlockConditions;
 import net.thephantompig791.appli.power.factory.condition.AppliEntityConditions;
 import net.thephantompig791.appli.server.RadialMenuServer;
-import net.thephantompig791.appli.titan_shifters_content.item.TitanShiftersItems;
+import net.thephantompig791.appli.titan_shifters_content.TitanShifters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Appli implements ModInitializer {
     public static final String MOD_ID = "appli";
-    public static final String TS_MOD_ID = "titan_shifter_megapack";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static String VERSION = "";
 
@@ -34,7 +33,7 @@ public class Appli implements ModInitializer {
 
         RadialMenuServer.init();
 
-        TitanShiftersItems.register();
+        TitanShifters.register();
 
         //yeah, i took this from apoli.java, sorry about that, but like everyone else did, so...
         FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(modContainer -> {
