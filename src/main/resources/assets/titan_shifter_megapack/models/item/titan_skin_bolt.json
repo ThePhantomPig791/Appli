@@ -2,5 +2,13 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "titan_shifter_megapack:item/titan_skin_bolt"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "mainhand_pull": 1
+      },
+      "model": "titan_shifter_megapack:item/empty"
+    }
+  ]
 }

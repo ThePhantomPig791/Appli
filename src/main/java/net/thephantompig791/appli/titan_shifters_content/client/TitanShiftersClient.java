@@ -4,10 +4,14 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BowItem;
 import net.minecraft.util.Identifier;
+import net.thephantompig791.appli.Appli;
 import net.thephantompig791.appli.titan_shifters_content.TitanShifters;
 import net.thephantompig791.appli.titan_shifters_content.client.render.TitanSkinBoltEntityRenderer;
 import net.thephantompig791.appli.titan_shifters_content.item.TitanShiftersItems;
+import net.thephantompig791.appli.titan_shifters_content.item.TitanSkinBowItem;
 
 public class TitanShiftersClient {
     @Environment(EnvType.CLIENT)
@@ -34,7 +38,16 @@ public class TitanShiftersClient {
                 entity != null &&
                 entity.isUsingItem() &&
                 entity.getActiveItem() == stack &&
-                entity.getOffHandStack().isOf(TitanShiftersItems.TITAN_SKIN_BOLT)
-                        ? 1.0f : 0.0f);
+                (entity.getOffHandStack().isOf(TitanShiftersItems.TITAN_SKIN_BOLT) || (entity instanceof PlayerEntity p && p.isCreative()))
+                        ? 1.0f : 0.0f
+        );
+
+        ModelPredicateProviderRegistry.register(TitanShiftersItems.TITAN_SKIN_BOLT, new Identifier("mainhand_pull"), (stack, world, entity, seed) ->
+                entity != null &&
+                entity.getMainHandStack().isOf(TitanShiftersItems.TITAN_SKIN_BOW) &&
+                entity.getOffHandStack().equals(stack) &&
+                entity.getItemUseTimeLeft() != 0
+                    ? 1.0f : 0
+        );
     }
 }

@@ -1,6 +1,7 @@
 package net.thephantompig791.appli.util;
 
 import io.github.apace100.apoli.power.factory.action.ActionFactory;
+import io.github.apace100.apoli.power.factory.condition.ConditionFactory;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -10,6 +11,7 @@ import net.minecraft.item.ItemStack;
 public class RadialMenuEntry {
     private final ItemStack stack;
     private ActionFactory<LivingEntity>.Instance action;
+    private ConditionFactory<LivingEntity>.Instance condition;
     private Vector2f position;
     private final int distance;
     private final int velocity;
@@ -17,9 +19,10 @@ public class RadialMenuEntry {
     @Environment(EnvType.CLIENT)
     private ButtonWidget button;
 
-    public RadialMenuEntry(ItemStack stack, ActionFactory<LivingEntity>.Instance action, int distance, int velocity) {
+    public RadialMenuEntry(ItemStack stack, ActionFactory<LivingEntity>.Instance action, ConditionFactory<LivingEntity>.Instance condition, int distance, int velocity) {
         this.stack = stack;
         this.action = action;
+        this.condition = condition;
         position = new Vector2f(-100f, 0f);
         this.distance = distance;
         this.velocity = velocity;
@@ -34,6 +37,13 @@ public class RadialMenuEntry {
     }
     public void setEntityAction(ActionFactory<LivingEntity>.Instance action) {
         this.action = action;
+    }
+
+    public ConditionFactory<LivingEntity>.Instance getCondition() {
+        return condition;
+    }
+    public void setCondition(ConditionFactory<LivingEntity>.Instance condition) {
+        this.condition = condition;
     }
 
     public Vector2f getPosition() {
