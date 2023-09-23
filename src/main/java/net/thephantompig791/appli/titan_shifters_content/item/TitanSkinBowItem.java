@@ -6,8 +6,6 @@ import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.thephantompig791.appli.titan_shifters_content.entity.TitanSkinBoltEntity;
 
@@ -26,12 +24,6 @@ public class TitanSkinBowItem extends BowItem {
     @Override
     public int getRange() {
         return 8;
-    }
-
-    @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ItemStack itemStack = user.getStackInHand(hand);
-        return user.getAbilities().creativeMode || user.getOffHandStack().isOf(TitanShiftersItems.TITAN_SKIN_BOLT) ? TypedActionResult.consume(itemStack) : TypedActionResult.pass(itemStack);
     }
 
     @Override

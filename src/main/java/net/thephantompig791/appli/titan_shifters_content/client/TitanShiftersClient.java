@@ -30,6 +30,11 @@ public class TitanShiftersClient {
             }
             return (float)(stack.getMaxUseTime() - entity.getItemUseTimeLeft()) / 20.0f;
         });
-        ModelPredicateProviderRegistry.register(TitanShiftersItems.TITAN_SKIN_BOW, new Identifier("pulling"), (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0f : 0.0f);
+        ModelPredicateProviderRegistry.register(TitanShiftersItems.TITAN_SKIN_BOW, new Identifier("pulling"), (stack, world, entity, seed) ->
+                entity != null &&
+                entity.isUsingItem() &&
+                entity.getActiveItem() == stack &&
+                entity.getOffHandStack().isOf(TitanShiftersItems.TITAN_SKIN_BOLT)
+                        ? 1.0f : 0.0f);
     }
 }
