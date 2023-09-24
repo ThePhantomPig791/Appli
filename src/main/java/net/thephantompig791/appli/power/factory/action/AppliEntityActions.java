@@ -31,6 +31,7 @@ public class AppliEntityActions {
 
                     List<RadialMenuEntry> entries = data.get("entries");
                     entries.removeIf(entry -> entry.getCondition() != null && !entry.getCondition().test(livingEntity));
+                    if (entries.size() == 0) return;
 
                     PacketByteBuf buf = PacketByteBufs.create();
                     AppliDataTypes.RADIAL_MENU_ENTRIES.send(buf, entries);
