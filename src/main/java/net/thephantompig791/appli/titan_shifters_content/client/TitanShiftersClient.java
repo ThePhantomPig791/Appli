@@ -5,13 +5,10 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BowItem;
 import net.minecraft.util.Identifier;
-import net.thephantompig791.appli.Appli;
 import net.thephantompig791.appli.titan_shifters_content.TitanShifters;
 import net.thephantompig791.appli.titan_shifters_content.client.render.TitanSkinBoltEntityRenderer;
 import net.thephantompig791.appli.titan_shifters_content.item.TitanShiftersItems;
-import net.thephantompig791.appli.titan_shifters_content.item.TitanSkinBowItem;
 
 public class TitanShiftersClient {
     @Environment(EnvType.CLIENT)
