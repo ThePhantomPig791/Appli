@@ -1,5 +1,7 @@
 # gradle
 
+libs/
+remappedSrc/
 .gradle/
 build/
 out/
