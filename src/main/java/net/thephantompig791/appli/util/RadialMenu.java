@@ -40,10 +40,8 @@ public class RadialMenu {
                     .size(16, 20)
                     .tooltip(Tooltip.of(Text.literal(radialMenuEntry.getStack().getName().getString())))
                     .build();
-            button.setPos(
-                    Math.round(radialMenuEntry.getPosition().x()),
-                    Math.round(radialMenuEntry.getPosition().y() - 1)
-            );
+            button.setX(Math.round(radialMenuEntry.getPosition().x()));
+            button.setY(Math.round(radialMenuEntry.getPosition().y() - 1));
             radialMenuEntry.setButton(button);
         }));
     }

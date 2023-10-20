@@ -24,7 +24,7 @@ public class AppliEntityActions {
                 .add("entries", AppliDataTypes.RADIAL_MENU_ENTRIES),
                 (data, entity) -> {
                     if (!entity.isPlayer() || !(entity instanceof LivingEntity livingEntity)) return;
-                    if (entity.world.isClient) {
+                    if (entity.getWorld().isClient) {
                         MinecraftClient.getInstance().mouse.unlockCursor();
                         return;
                     }

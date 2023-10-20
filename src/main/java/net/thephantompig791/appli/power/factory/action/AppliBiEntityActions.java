@@ -45,18 +45,18 @@ public class AppliBiEntityActions {
                     Entity commandExecutor = data.getString("as").equalsIgnoreCase("actor") ? actor : target;
                     Entity commandPositionExecutor = data.getString("at").equalsIgnoreCase("actor") ? actor : target;
 
-                    MinecraftServer server = commandExecutor.world.getServer();
+                    MinecraftServer server = commandExecutor.getWorld().getServer();
                     if(server != null) {
                         boolean validOutput = !(commandExecutor instanceof ServerPlayerEntity) || ((ServerPlayerEntity)commandExecutor).networkHandler != null;
                         ServerCommandSource source = new ServerCommandSource(
                                 Apoli.config.executeCommand.showOutput && validOutput ? commandExecutor : CommandOutput.DUMMY,
                                 commandPositionExecutor.getPos(),
                                 commandPositionExecutor.getRotationClient(),
-                                commandExecutor.world instanceof ServerWorld ? (ServerWorld)commandExecutor.world : null,
+                                commandExecutor.getWorld() instanceof ServerWorld ? (ServerWorld)commandExecutor.getWorld() : null,
                                 Apoli.config.executeCommand.permissionLevel,
                                 commandExecutor.getName().getString(),
                                 commandExecutor.getDisplayName(),
-                                commandExecutor.world.getServer(),
+                                commandExecutor.getWorld().getServer(),
                                 commandExecutor);
                         server.getCommandManager().executeWithPrefix(source, data.getString("command"));
                     }

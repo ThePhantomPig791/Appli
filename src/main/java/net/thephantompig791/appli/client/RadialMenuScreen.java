@@ -2,6 +2,7 @@ package net.thephantompig791.appli.client;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
@@ -39,20 +40,20 @@ public class RadialMenuScreen extends Screen {
     }
 
     @Override
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
+    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         if (client != null) {
-            this.setZOffset(100);
             clearChildren();
             this.radialMenu.getEntries().forEach(radialMenuEntry -> {
-                if (radialMenuEntry.getButton() != null) radialMenuEntry.getButton().render(matrices, mouseX, mouseY, delta);
-                client.getItemRenderer().renderInGui(
+                if (radialMenuEntry.getButton() != null) radialMenuEntry.getButton().render(context, mouseX, mouseY, delta);
+                context.drawItem(
                         radialMenuEntry.getStack(),
                         Math.round(radialMenuEntry.getPosition().x()),
-                        Math.round(radialMenuEntry.getPosition().y())
+                        Math.round(radialMenuEntry.getPosition().y()),
+                        0,
+                        100
                 );
                 addDrawableChild(radialMenuEntry.getButton());
             });
-            this.setZOffset(0);
         }
     }
 }
