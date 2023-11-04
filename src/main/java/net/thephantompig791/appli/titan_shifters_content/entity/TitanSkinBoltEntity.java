@@ -6,7 +6,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.DamageSources;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,7 +13,7 @@ import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.EntityHitResult;
@@ -67,8 +66,8 @@ public class TitanSkinBoltEntity extends PersistentProjectileEntity {
         Entity entity = entityHitResult.getEntity();
         float i = Math.min((float) this.getVelocity().lengthSquared(), 5);
 
-        DamageSources ds = new DamageSources(DynamicRegistryManager.EMPTY);
-        entity.damage(ds.mobProjectile(this, (LivingEntity) this.getOwner()), i / 5);
+        entity.damage(getWorld().getDamageSources().mobProjectile(this, (LivingEntity) this.getOwner()), i / 5);
+
         if (entity instanceof LivingEntity livingEntity) {
             livingEntity.addStatusEffect(
                     (new StatusEffectInstance(StatusEffects.SLOWNESS, (int) (20 * Math.ceil(i)), 0)),
