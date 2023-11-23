@@ -26,7 +26,7 @@ public class TitanShifters {
     public static void register() {
         TitanShiftersItems.register();
 
-        Appli.LOGGER.info("Titan Shifters content loaded!");
+        Appli.LOGGER.info("Titan Shifters content loaded! (Note: this will load even if you do not have the corresponding datapack installed.)");
     }
 
     public static Identifier identifier(String path) {
