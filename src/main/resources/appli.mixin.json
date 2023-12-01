@@ -4,11 +4,12 @@
   "package": "net.thephantompig791.appli.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "MerchantEntityMixin"
   ],
   "client": [
+    "BipedEntityModelMixin",
     "DisableKeysPowerMixin",
-    "DisableMousePowerMixin",
-    "BipedEntityModelMixin"
+    "DisableMousePowerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
