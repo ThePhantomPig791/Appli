@@ -75,8 +75,6 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity>
             transformations.addAll(power.getTransformations());
         });
 
-        Appli.LOGGER.info("pre: " + head.pivotZ);
-
         //please excuse this disgusting double switch statement
         transformations.forEach(t -> {
             switch (t.getModelPart().toLowerCase()) {
@@ -188,7 +186,5 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity>
                 }
             }
         });
-
-        Appli.LOGGER.info("post: " + head.pivotZ);
     }
 }
