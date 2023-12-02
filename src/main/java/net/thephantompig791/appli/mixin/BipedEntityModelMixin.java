@@ -7,6 +7,7 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.ModelWithArms;
 import net.minecraft.client.render.entity.model.ModelWithHead;
 import net.minecraft.entity.LivingEntity;
+import net.thephantompig791.appli.Appli;
 import net.thephantompig791.appli.power.ModifyModelPartsPower;
 import net.thephantompig791.appli.util.ModelPartTransformation;
 import org.spongepowered.asm.mixin.Final;
@@ -52,6 +53,14 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity>
                 modelPart.zScale = 1;
             });
         }
+        this.getBodyParts().forEach(modelPart -> {
+            modelPart.pivotX = modelPart.getDefaultTransform().pivotX;
+            modelPart.pivotY = modelPart.getDefaultTransform().pivotY;
+            modelPart.pivotZ = modelPart.getDefaultTransform().pivotZ;
+        });
+        head.pivotX = head.getDefaultTransform().pivotX;
+        head.pivotY = head.getDefaultTransform().pivotY;
+        head.pivotZ = head.getDefaultTransform().pivotZ;
     }
 
     @Inject(
@@ -65,6 +74,8 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity>
         PowerHolderComponent.getPowers(livingEntity, ModifyModelPartsPower.class).forEach(power -> {
             transformations.addAll(power.getTransformations());
         });
+
+        Appli.LOGGER.info("pre: " + head.pivotZ);
 
         //please excuse this disgusting double switch statement
         transformations.forEach(t -> {
@@ -177,5 +188,7 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity>
                 }
             }
         });
+
+        Appli.LOGGER.info("post: " + head.pivotZ);
     }
 }
