@@ -46,21 +46,32 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity>
             at = @At(value = "HEAD")
     )
     public void setAnglesHead(T livingEntity, float f, float g, float h, float i, float j, CallbackInfo ci) {
-        if (!PowerHolderComponent.hasPower(livingEntity, ModifyModelPartsPower.class)) {
+        /*if (!PowerHolderComponent.hasPower(livingEntity, ModifyModelPartsPower.class)) {
             this.getBodyParts().forEach(modelPart -> {
                 modelPart.xScale = 1;
                 modelPart.yScale = 1;
                 modelPart.zScale = 1;
             });
-        }
+        }*/
         this.getBodyParts().forEach(modelPart -> {
             modelPart.pivotX = modelPart.getDefaultTransform().pivotX;
             modelPart.pivotY = modelPart.getDefaultTransform().pivotY;
             modelPart.pivotZ = modelPart.getDefaultTransform().pivotZ;
+            modelPart.pitch = modelPart.getDefaultTransform().pitch;
+            modelPart.yaw = modelPart.getDefaultTransform().yaw;
+            modelPart.roll = modelPart.getDefaultTransform().roll;
+            modelPart.xScale = 1;
+            modelPart.yScale = 1;
+            modelPart.zScale = 1;
         });
         head.pivotX = head.getDefaultTransform().pivotX;
         head.pivotY = head.getDefaultTransform().pivotY;
         head.pivotZ = head.getDefaultTransform().pivotZ;
+        head.yaw = head.getDefaultTransform().yaw;
+        head.roll = head.getDefaultTransform().roll;
+        head.xScale = 1;
+        head.yScale = 1;
+        head.zScale = 1;
     }
 
     @Inject(
