@@ -32,7 +32,8 @@ public abstract class MerchantEntityMixin extends Entity {
         List<ActionOnTradePower> powers = PowerHolderComponent.getPowers(this.getCustomer(), ActionOnTradePower.class);
         powers.forEach(power -> {
             if (power.isActive() && (power.bientityCondition == null || power.bientityCondition.test(new Pair<>(this.getCustomer(), this)))) {
-                power.bientityAction.accept(new Pair<>(this.getCustomer(), this));
+                if (power.itemAction != null) power.itemAction.accept(new Pair<>(this.getWorld(), offer.getSellItem()));
+                if (power.bientityAction != null) power.bientityAction.accept(new Pair<>(this.getCustomer(), this));
             }
         });
     }

@@ -11,6 +11,7 @@ public class AppliPowerFactories {
         register(PreventMousePower.createSimpleFactory(PreventMousePower::new, Appli.identifier("prevent_mouse")));
         register(ModifyModelPartsPower.getFactory());
         register(ActionOnTradePower.getFactory());
+        register(PreventItemPickupPower.getFactory());
     }
 
     private static void register(PowerFactory<?> p) {
