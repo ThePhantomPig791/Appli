@@ -24,7 +24,10 @@ public abstract class ItemEntityMixin extends ItemEntity {
     public void onPlayerCollision(PlayerEntity player, CallbackInfo ci) {
         List<PreventItemPickupPower> powers = PowerHolderComponent.getPowers(player, PreventItemPickupPower.class);
         powers.forEach(power -> {
-            if (power.isActive() && power.bientityCondition == null || power.bientityCondition.test(new Pair<>(player, this))) {
+            if (power.isActive()
+                    && (power.bientityCondition == null || power.bientityCondition.test(new Pair<>(player, this)))
+                    && (power.itemCondition == null || power.itemCondition.test(new Pair<>(this.getWorld(), this.getStack())))
+            ) {
                 ci.cancel();
             }
         });

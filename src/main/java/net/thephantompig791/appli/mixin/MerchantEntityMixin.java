@@ -8,8 +8,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Pair;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.world.World;
-import net.thephantompig791.appli.Appli;
 import net.thephantompig791.appli.power.ActionOnTradePower;
+import net.thephantompig791.appli.power.PreventTradePower;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -27,8 +27,23 @@ public abstract class MerchantEntityMixin extends Entity {
         super(entityType, world);
     }
 
+    @Inject(method = "trade", at = @At("HEAD"), cancellable = true)
+    public void tradeHead(TradeOffer offer, CallbackInfo ci) {
+        List<PreventTradePower> powers = PowerHolderComponent.getPowers(this.getCustomer(), PreventTradePower.class);
+        powers.forEach(power -> {
+            if (power.isActive()
+                    && (power.buyItemCondition == null || power.buyItemCondition.test(new Pair<>(this.getWorld(), power.buyItemConditionConsiderAdjustments ? offer.getAdjustedFirstBuyItem() : offer.getOriginalFirstBuyItem())))
+                    && (power.secondBuyItemCondition == null || power.secondBuyItemCondition.test(new Pair<>(this.getWorld(), offer.getSecondBuyItem())))
+                    && (power.sellItemCondition == null || power.sellItemCondition.test(new Pair<>(this.getWorld(), offer.getSellItem())))
+                    && (power.bientityCondition == null || power.bientityCondition.test(new Pair<>(this.getCustomer(), this)))
+            ) {
+                ci.cancel();
+            }
+        });
+    }
+
     @Inject(method = "trade", at = @At("TAIL"))
-    public void trade(TradeOffer offer, CallbackInfo ci) {
+    public void tradeTail(TradeOffer offer, CallbackInfo ci) {
         List<ActionOnTradePower> powers = PowerHolderComponent.getPowers(this.getCustomer(), ActionOnTradePower.class);
         powers.forEach(power -> {
             if (power.isActive() && (power.bientityCondition == null || power.bientityCondition.test(new Pair<>(this.getCustomer(), this)))) {
