@@ -25,11 +25,11 @@ public class PreventTradePower extends Power {
     public static PowerFactory<?> getFactory() {
         return new PowerFactory<>(Appli.identifier("prevent_trade"),
                 new SerializableData()
-                        .add("buy_item_condition", ApoliDataTypes.ITEM_CONDITION)
-                        .add("sell_item_condition", ApoliDataTypes.ITEM_CONDITION)
-                        .add("second_sell_item_condition", ApoliDataTypes.ITEM_CONDITION)
-                        .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION)
-                        .add("buy_item_condition_consider_adjustments", SerializableDataTypes.BOOLEAN),
+                        .add("buy_item_condition", ApoliDataTypes.ITEM_CONDITION, null)
+                        .add("sell_item_condition", ApoliDataTypes.ITEM_CONDITION, null)
+                        .add("second_sell_item_condition", ApoliDataTypes.ITEM_CONDITION, null)
+                        .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION, null)
+                        .add("buy_item_condition_consider_adjustments", SerializableDataTypes.BOOLEAN, true),
                 data ->
                     (type, player) ->
                             new PreventTradePower(type, player, data.get("buy_item_condition"), data.get("sell_item_condition"), data.get("second_sell_item_condition"), data.get("bientity_condition"), data.getBoolean("buy_item_condition_consider_adjustments"))
