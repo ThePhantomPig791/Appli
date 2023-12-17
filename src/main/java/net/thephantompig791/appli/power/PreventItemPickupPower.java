@@ -8,9 +8,9 @@ import io.github.apace100.calio.data.SerializableData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Pair;
 import net.minecraft.world.World;
 import net.thephantompig791.appli.Appli;
-import oshi.util.tuples.Pair;
 
 import java.util.function.Predicate;
 
@@ -21,8 +21,8 @@ public class PreventItemPickupPower extends Power {
     public static PowerFactory<?> getFactory() {
         return new PowerFactory<>(Appli.identifier("prevent_item_pickup"),
                 new SerializableData()
-                        .add("item_condition", ApoliDataTypes.ITEM_CONDITION)
-                        .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION),
+                        .add("item_condition", ApoliDataTypes.ITEM_CONDITION, null)
+                        .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION, null),
                 data ->
                     (type, player) ->
                             new PreventItemPickupPower(type, player, data.get("item_condition"), data.get("bientity_condition"))
