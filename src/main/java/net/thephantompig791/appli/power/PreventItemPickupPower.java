@@ -26,7 +26,7 @@ public class PreventItemPickupPower extends Power {
                 data ->
                     (type, player) ->
                             new PreventItemPickupPower(type, player, data.get("item_condition"), data.get("bientity_condition"))
-                );
+                ).allowCondition();
     }
 
     public PreventItemPickupPower(PowerType<?> type, LivingEntity entity, Predicate<Pair<World, ItemStack>> itemCondition, Predicate<Pair<Entity, Entity>> bientityCondition) {

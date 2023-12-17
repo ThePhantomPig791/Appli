@@ -33,7 +33,7 @@ public class PreventTradePower extends Power {
                 data ->
                     (type, player) ->
                             new PreventTradePower(type, player, data.get("buy_item_condition"), data.get("sell_item_condition"), data.get("second_sell_item_condition"), data.get("bientity_condition"), data.getBoolean("buy_item_condition_consider_adjustments"))
-                );
+                ).allowCondition();
     }
 
     public PreventTradePower(PowerType<?> type, LivingEntity entity, Predicate<Pair<World, ItemStack>> buyItemCondition, Predicate<Pair<World, ItemStack>> sellItemCondition, Predicate<Pair<World, ItemStack>> secondSellItemCondition, Predicate<Pair<Entity, Entity>> bientityCondition, boolean buyItemConditionConsiderAdjustments) {
