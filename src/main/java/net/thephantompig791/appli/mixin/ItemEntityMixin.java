@@ -31,7 +31,7 @@ public abstract class ItemEntityMixin extends Entity implements Ownable {
         powers.forEach(power -> {
             if (power.isActive()
                     && (power.bientityCondition == null || power.bientityCondition.test(new Pair<>(player, this)))
-                    && (power.itemCondition == null || power.itemCondition.test(new Pair<>(this.getWorld(), this.getStack())))
+                    && (power.itemCondition == null || power.itemCondition.test(this.getStack()))
             ) {
                 ci.cancel();
             }

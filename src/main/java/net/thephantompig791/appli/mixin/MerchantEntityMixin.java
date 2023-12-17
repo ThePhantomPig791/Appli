@@ -32,9 +32,9 @@ public abstract class MerchantEntityMixin extends Entity {
         List<PreventTradePower> powers = PowerHolderComponent.getPowers(this.getCustomer(), PreventTradePower.class);
         powers.forEach(power -> {
             if (power.isActive()
-                    && (power.buyItemCondition == null || power.buyItemCondition.test(new Pair<>(this.getWorld(), power.buyItemConditionConsiderAdjustments ? offer.getAdjustedFirstBuyItem() : offer.getOriginalFirstBuyItem())))
-                    && (power.secondBuyItemCondition == null || power.secondBuyItemCondition.test(new Pair<>(this.getWorld(), offer.getSecondBuyItem())))
-                    && (power.sellItemCondition == null || power.sellItemCondition.test(new Pair<>(this.getWorld(), offer.getSellItem())))
+                    && (power.buyItemCondition == null || power.buyItemCondition.test(power.buyItemConditionConsiderAdjustments ? offer.getAdjustedFirstBuyItem() : offer.getOriginalFirstBuyItem()))
+                    && (power.secondBuyItemCondition == null || power.secondBuyItemCondition.test(offer.getSecondBuyItem()))
+                    && (power.sellItemCondition == null || power.sellItemCondition.test(offer.getSellItem()))
                     && (power.bientityCondition == null || power.bientityCondition.test(new Pair<>(this.getCustomer(), this)))
             ) {
                 ci.cancel();

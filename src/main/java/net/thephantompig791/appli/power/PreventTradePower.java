@@ -16,9 +16,9 @@ import net.thephantompig791.appli.Appli;
 import java.util.function.Predicate;
 
 public class PreventTradePower extends Power {
-    public Predicate<Pair<World, ItemStack>> sellItemCondition;
-    public Predicate<Pair<World, ItemStack>> buyItemCondition;
-    public Predicate<Pair<World, ItemStack>> secondBuyItemCondition;
+    public Predicate<ItemStack> sellItemCondition;
+    public Predicate<ItemStack> buyItemCondition;
+    public Predicate<ItemStack> secondBuyItemCondition;
     public Predicate<Pair<Entity, Entity>> bientityCondition;
     public boolean buyItemConditionConsiderAdjustments;
 
@@ -33,10 +33,10 @@ public class PreventTradePower extends Power {
                 data ->
                     (type, player) ->
                             new PreventTradePower(type, player, data.get("buy_item_condition"), data.get("sell_item_condition"), data.get("second_sell_item_condition"), data.get("bientity_condition"), data.getBoolean("buy_item_condition_consider_adjustments"))
-                );
+                ).allowCondition();
     }
 
-    public PreventTradePower(PowerType<?> type, LivingEntity entity, Predicate<Pair<World, ItemStack>> buyItemCondition, Predicate<Pair<World, ItemStack>> sellItemCondition, Predicate<Pair<World, ItemStack>> secondSellItemCondition, Predicate<Pair<Entity, Entity>> bientityCondition, boolean buyItemConditionConsiderAdjustments) {
+    public PreventTradePower(PowerType<?> type, LivingEntity entity, Predicate<ItemStack> buyItemCondition, Predicate<ItemStack> sellItemCondition, Predicate<ItemStack> secondSellItemCondition, Predicate<Pair<Entity, Entity>> bientityCondition, boolean buyItemConditionConsiderAdjustments) {
         super(type, entity);
         this.buyItemCondition = buyItemCondition;
         this.sellItemCondition = sellItemCondition;

@@ -30,7 +30,7 @@ public class ActionOnTradePower extends Power {
                 data ->
                         (type, player) ->
                                 new ActionOnTradePower(type, player, data.get("item_action"), data.get("bientity_action"), data.get("bientity_condition"))
-        );
+                ).allowCondition();
     }
 
     public ActionOnTradePower(PowerType<?> type, LivingEntity entity, Consumer<Pair<World, ItemStack>> itemAction, Consumer<Pair<Entity, Entity>> action, Predicate<Pair<Entity, Entity>> condition) {
