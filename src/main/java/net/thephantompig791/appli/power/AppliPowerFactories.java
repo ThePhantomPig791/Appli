@@ -12,6 +12,7 @@ public class AppliPowerFactories {
         register(ModifyModelPartsPower.getFactory());
         register(ActionOnTradePower.getFactory());
         register(PreventItemPickupPower.getFactory());
+        register(ActionOnKillPower.getFactory());
     }
 
     private static void register(PowerFactory<?> p) {

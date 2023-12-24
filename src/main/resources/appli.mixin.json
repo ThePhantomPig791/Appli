@@ -4,8 +4,9 @@
   "package": "net.thephantompig791.appli.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "MerchantEntityMixin",
-    "ItemEntityMixin"
+    "ItemEntityMixin",
+    "LivingEntityMixin",
+    "MerchantEntityMixin"
   ],
   "client": [
     "BipedEntityModelMixin",
