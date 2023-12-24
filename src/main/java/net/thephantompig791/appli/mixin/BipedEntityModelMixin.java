@@ -7,7 +7,6 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.ModelWithArms;
 import net.minecraft.client.render.entity.model.ModelWithHead;
 import net.minecraft.entity.LivingEntity;
-import net.thephantompig791.appli.Appli;
 import net.thephantompig791.appli.power.ModifyModelPartsPower;
 import net.thephantompig791.appli.util.ModelPartTransformation;
 import org.spongepowered.asm.mixin.Final;
