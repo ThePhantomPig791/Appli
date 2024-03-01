@@ -21,7 +21,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
 
     // lowkey stole the header from apoli's self action on kill- but it's essentially the same power and should exist anyway
     @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;onDeath(Lnet/minecraft/entity/damage/DamageSource;)V"))
-    private void invokeKillAction(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+    private void appli$invokeKillAction(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         PowerHolderComponent.getPowers(source.getAttacker(), ActionOnKillPower.class).forEach(p -> p.onKill(source.getAttacker(), this, source, amount));
     }
 }

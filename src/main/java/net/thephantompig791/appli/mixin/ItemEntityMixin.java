@@ -27,7 +27,7 @@ public abstract class ItemEntityMixin extends Entity implements Ownable {
     protected abstract ItemStack getStack();
 
     @Inject(method = "onPlayerCollision", at = @At("HEAD"), cancellable = true)
-    public void onPlayerCollision(PlayerEntity player, CallbackInfo ci) {
+    public void appli$onPlayerCollision(PlayerEntity player, CallbackInfo ci) {
         List<PreventItemPickupPower> powers = PowerHolderComponent.getPowers(player, PreventItemPickupPower.class);
         powers.forEach(power -> {
             if (power.isActive()

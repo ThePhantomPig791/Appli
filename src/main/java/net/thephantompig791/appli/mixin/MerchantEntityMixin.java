@@ -29,7 +29,7 @@ public abstract class MerchantEntityMixin extends Entity {
     }
 
     @Inject(method = "trade", at = @At("HEAD"), cancellable = true)
-    public void tradeHead(TradeOffer offer, CallbackInfo ci) {
+    public void appli$tradeHead(TradeOffer offer, CallbackInfo ci) {
         List<PreventTradePower> powers = PowerHolderComponent.getPowers(this.getCustomer(), PreventTradePower.class);
         powers.forEach(power -> {
             if (power.isActive()
@@ -44,7 +44,7 @@ public abstract class MerchantEntityMixin extends Entity {
     }
 
     @Inject(method = "trade", at = @At("TAIL"))
-    public void tradeTail(TradeOffer offer, CallbackInfo ci) {
+    public void appli$tradeTail(TradeOffer offer, CallbackInfo ci) {
         List<ActionOnTradePower> powers = PowerHolderComponent.getPowers(this.getCustomer(), ActionOnTradePower.class);
         powers.forEach(power -> {
             if (power.isActive() && (power.bientityCondition == null || power.bientityCondition.test(new Pair<>(this.getCustomer(), this)))) {

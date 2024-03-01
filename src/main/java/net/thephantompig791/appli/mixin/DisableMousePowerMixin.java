@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin (Mouse.class )
 public abstract class DisableMousePowerMixin {
     @Inject(method = "onMouseButton", at = @At("HEAD"), cancellable = true)
-    private void onMouseButton(long window, int button, int action, int mods, CallbackInfo callbackInfo) {
+    private void appli$onMouseButton(long window, int button, int action, int mods, CallbackInfo callbackInfo) {
         if (MinecraftClient.getInstance().player != null && !MinecraftClient.getInstance().player.isSpectator()) {
             if (PowerHolderComponent.getPowers(MinecraftClient.getInstance().player, PreventMousePower.class).stream().anyMatch(Power::isActive)) {
                 callbackInfo.cancel();
@@ -22,7 +22,7 @@ public abstract class DisableMousePowerMixin {
     }
 
     @Inject(method = "onMouseScroll", at = @At("HEAD"), cancellable = true)
-    private void onMouseScroll(long window, double horizontal, double vertical, CallbackInfo callbackInfo) {
+    private void appli$onMouseScroll(long window, double horizontal, double vertical, CallbackInfo callbackInfo) {
         if (MinecraftClient.getInstance().player != null && !MinecraftClient.getInstance().player.isSpectator()) {
             if (PowerHolderComponent.getPowers(MinecraftClient.getInstance().player, PreventMousePower.class).stream().anyMatch(Power::isActive)) {
                 callbackInfo.cancel();
@@ -31,7 +31,7 @@ public abstract class DisableMousePowerMixin {
     }
 
     @Inject(method = "updateMouse", at = @At("HEAD"), cancellable = true)
-    private void updateMouse(CallbackInfo callbackInfo) {
+    private void appli$updateMouse(CallbackInfo callbackInfo) {
         if (MinecraftClient.getInstance().player != null && !MinecraftClient.getInstance().player.isSpectator()) {
             if (PowerHolderComponent.getPowers(MinecraftClient.getInstance().player, PreventMousePower.class).stream().anyMatch(Power::isActive)) {
                 callbackInfo.cancel();

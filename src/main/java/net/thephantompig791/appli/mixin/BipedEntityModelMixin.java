@@ -44,7 +44,7 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity>
             method = "setAngles(Lnet/minecraft/entity/LivingEntity;FFFFF)V",
             at = @At(value = "HEAD")
     )
-    public void setAnglesHead(T livingEntity, float f, float g, float h, float i, float j, CallbackInfo ci) {
+    public void appli$setAnglesHead(T livingEntity, float f, float g, float h, float i, float j, CallbackInfo ci) {
         /*if (!PowerHolderComponent.hasPower(livingEntity, ModifyModelPartsPower.class)) {
             this.getBodyParts().forEach(modelPart -> {
                 modelPart.xScale = 1;
@@ -77,7 +77,7 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity>
             method = "setAngles(Lnet/minecraft/entity/LivingEntity;FFFFF)V",
             at = @At(value = "TAIL")
     )
-    public void setAnglesTail(T livingEntity, float f, float g, float h, float i, float j, CallbackInfo ci) {
+    public void appli$setAnglesTail(T livingEntity, float f, float g, float h, float i, float j, CallbackInfo ci) {
         if (!PowerHolderComponent.hasPower(livingEntity, ModifyModelPartsPower.class)) return;
 
         List<ModelPartTransformation> transformations = new ArrayList<>();
