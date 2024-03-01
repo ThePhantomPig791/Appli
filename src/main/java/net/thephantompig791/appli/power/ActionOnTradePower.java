@@ -7,7 +7,7 @@ import io.github.apace100.apoli.power.factory.PowerFactory;
 import io.github.apace100.calio.data.SerializableData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.inventory.StackReference;
 import net.minecraft.util.Pair;
 import net.minecraft.world.World;
 import net.thephantompig791.appli.Appli;
@@ -16,7 +16,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class ActionOnTradePower extends Power {
-    public Consumer<Pair<World, ItemStack>> itemAction;
+    public Consumer<Pair<World, StackReference>> itemAction;
     public Consumer<Pair<Entity, Entity>> bientityAction;
     public Predicate<Pair<Entity, Entity>> bientityCondition;
 
@@ -33,7 +33,7 @@ public class ActionOnTradePower extends Power {
                 ).allowCondition();
     }
 
-    public ActionOnTradePower(PowerType<?> type, LivingEntity entity, Consumer<Pair<World, ItemStack>> itemAction, Consumer<Pair<Entity, Entity>> action, Predicate<Pair<Entity, Entity>> condition) {
+    public ActionOnTradePower(PowerType<?> type, LivingEntity entity, Consumer<Pair<World, StackReference>> itemAction, Consumer<Pair<Entity, Entity>> action, Predicate<Pair<Entity, Entity>> condition) {
         super(type, entity);
         this.itemAction = itemAction;
         this.bientityAction = action;

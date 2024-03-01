@@ -1,6 +1,7 @@
 package net.thephantompig791.appli.mixin;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
+import io.github.apace100.apoli.util.InventoryUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.MerchantEntity;
@@ -32,9 +33,9 @@ public abstract class MerchantEntityMixin extends Entity {
         List<PreventTradePower> powers = PowerHolderComponent.getPowers(this.getCustomer(), PreventTradePower.class);
         powers.forEach(power -> {
             if (power.isActive()
-                    && (power.buyItemCondition == null || power.buyItemCondition.test(new Pair<>(this.getWorld(), power.buyItemConditionConsiderAdjustments ? offer.getAdjustedFirstBuyItem() : offer.getOriginalFirstBuyItem())))
-                    && (power.secondBuyItemCondition == null || power.secondBuyItemCondition.test(new Pair<>(this.getWorld(), offer.getSecondBuyItem())))
-                    && (power.sellItemCondition == null || power.sellItemCondition.test(new Pair<>(this.getWorld(), offer.getSellItem())))
+                    && (power.buyItemCondition == null || power.buyItemCondition.test(new Pair<>(this.getWorld(), InventoryUtil.createStackReference(power.buyItemConditionConsiderAdjustments ? offer.getAdjustedFirstBuyItem() : offer.getOriginalFirstBuyItem()))))
+                    && (power.secondBuyItemCondition == null || power.secondBuyItemCondition.test(new Pair<>(this.getWorld(), InventoryUtil.createStackReference(offer.getSecondBuyItem()))))
+                    && (power.sellItemCondition == null || power.sellItemCondition.test(new Pair<>(this.getWorld(), InventoryUtil.createStackReference(offer.getSellItem()))))
                     && (power.bientityCondition == null || power.bientityCondition.test(new Pair<>(this.getCustomer(), this)))
             ) {
                 ci.cancel();
@@ -47,7 +48,7 @@ public abstract class MerchantEntityMixin extends Entity {
         List<ActionOnTradePower> powers = PowerHolderComponent.getPowers(this.getCustomer(), ActionOnTradePower.class);
         powers.forEach(power -> {
             if (power.isActive() && (power.bientityCondition == null || power.bientityCondition.test(new Pair<>(this.getCustomer(), this)))) {
-                if (power.itemAction != null) power.itemAction.accept(new Pair<>(this.getWorld(), offer.getSellItem()));
+                if (power.itemAction != null) power.itemAction.accept(new Pair<>(this.getWorld(), InventoryUtil.createStackReference(offer.getSellItem())));
                 if (power.bientityAction != null) power.bientityAction.accept(new Pair<>(this.getCustomer(), this));
             }
         });

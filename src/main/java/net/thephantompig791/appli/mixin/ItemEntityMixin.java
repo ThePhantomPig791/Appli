@@ -1,6 +1,7 @@
 package net.thephantompig791.appli.mixin;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
+import io.github.apace100.apoli.util.InventoryUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -31,7 +32,7 @@ public abstract class ItemEntityMixin extends Entity implements Ownable {
         powers.forEach(power -> {
             if (power.isActive()
                     && (power.bientityCondition == null || power.bientityCondition.test(new Pair<>(player, this)))
-                    && (power.itemCondition == null || power.itemCondition.test(new Pair<>(this.getWorld(), this.getStack())))
+                    && (power.itemCondition == null || power.itemCondition.test(new Pair<>(this.getWorld(), InventoryUtil.createStackReference(this.getStack()))))
             ) {
                 ci.cancel();
             }

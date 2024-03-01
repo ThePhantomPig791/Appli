@@ -6,19 +6,19 @@ import io.github.apace100.apoli.power.PowerType;
 import io.github.apace100.apoli.power.factory.PowerFactory;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
-import net.minecraft.util.Pair;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.inventory.StackReference;
+import net.minecraft.util.Pair;
 import net.minecraft.world.World;
 import net.thephantompig791.appli.Appli;
 
 import java.util.function.Predicate;
 
 public class PreventTradePower extends Power {
-    public Predicate<Pair<World, ItemStack>> sellItemCondition;
-    public Predicate<Pair<World, ItemStack>> buyItemCondition;
-    public Predicate<Pair<World, ItemStack>> secondBuyItemCondition;
+    public Predicate<Pair<World, StackReference>> sellItemCondition;
+    public Predicate<Pair<World, StackReference>> buyItemCondition;
+    public Predicate<Pair<World, StackReference>> secondBuyItemCondition;
     public Predicate<Pair<Entity, Entity>> bientityCondition;
     public boolean buyItemConditionConsiderAdjustments;
 
@@ -36,7 +36,7 @@ public class PreventTradePower extends Power {
                 ).allowCondition();
     }
 
-    public PreventTradePower(PowerType<?> type, LivingEntity entity, Predicate<Pair<World, ItemStack>> buyItemCondition, Predicate<Pair<World, ItemStack>> sellItemCondition, Predicate<Pair<World, ItemStack>> secondSellItemCondition, Predicate<Pair<Entity, Entity>> bientityCondition, boolean buyItemConditionConsiderAdjustments) {
+    public PreventTradePower(PowerType<?> type, LivingEntity entity, Predicate<Pair<World, StackReference>> buyItemCondition, Predicate<Pair<World, StackReference>> sellItemCondition, Predicate<Pair<World, StackReference>> secondSellItemCondition, Predicate<Pair<Entity, Entity>> bientityCondition, boolean buyItemConditionConsiderAdjustments) {
         super(type, entity);
         this.buyItemCondition = buyItemCondition;
         this.sellItemCondition = sellItemCondition;

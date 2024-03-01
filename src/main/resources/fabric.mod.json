@@ -4,13 +4,15 @@
   "version": "${version}",
 
   "name": "Appli",
-  "description": "ThePhantomPig791's extension to A Power Library (the name stands for A Phantom Power Library, original I know).",
+  "description": "PhantomPig's extension to A Power Library (the name stands for A Phantom Power Library, original I know).",
   "authors": [
-    "ThePhantomPig791"
+    "PhantomPig"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://modrinth.com/mod/appli",
+    "wiki": "https://appli.readthedocs.io/en/latest/",
+    "sources": "https://github.com/ThePhantomPig791/Appli",
+    "discord": "https://discord.gg/gwnfUCEXBx"
   },
 
   "license": "MIT License",
@@ -36,7 +38,7 @@
       "1.20.2"
     ],
     "java": ">=17",
-    "apoli": ">=2.9.0"
+    "apoli": ">=2.11.0"
   },
   "suggests": {
     "another-mod": "*"

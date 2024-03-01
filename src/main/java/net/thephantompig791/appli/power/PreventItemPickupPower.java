@@ -7,7 +7,7 @@ import io.github.apace100.apoli.power.factory.PowerFactory;
 import io.github.apace100.calio.data.SerializableData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.inventory.StackReference;
 import net.minecraft.util.Pair;
 import net.minecraft.world.World;
 import net.thephantompig791.appli.Appli;
@@ -15,7 +15,7 @@ import net.thephantompig791.appli.Appli;
 import java.util.function.Predicate;
 
 public class PreventItemPickupPower extends Power {
-    public Predicate<Pair<World, ItemStack>> itemCondition;
+    public Predicate<Pair<World, StackReference>> itemCondition;
     public Predicate<Pair<Entity, Entity>> bientityCondition;
 
     public static PowerFactory<?> getFactory() {
@@ -29,7 +29,7 @@ public class PreventItemPickupPower extends Power {
                 ).allowCondition();
     }
 
-    public PreventItemPickupPower(PowerType<?> type, LivingEntity entity, Predicate<Pair<World, ItemStack>> itemCondition, Predicate<Pair<Entity, Entity>> bientityCondition) {
+    public PreventItemPickupPower(PowerType<?> type, LivingEntity entity, Predicate<Pair<World, StackReference>> itemCondition, Predicate<Pair<Entity, Entity>> bientityCondition) {
         super(type, entity);
         this.itemCondition = itemCondition;
         this.bientityCondition = bientityCondition;
