@@ -65,6 +65,8 @@ dependencies {
 	modApi "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.ccb_version}" exclude group: "net.fabricmc", module: "fabric-loader"
 	// Adds an implementation dependency on the entity module
 	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cce_version}" exclude group: "net.fabricmc", module: "fabric-loader"
+
+	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")))
 }
 
 processResources {

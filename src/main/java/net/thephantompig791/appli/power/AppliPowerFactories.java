@@ -14,6 +14,7 @@ public class AppliPowerFactories {
         register(PreventItemPickupPower.getFactory());
         register(ActionOnKillPower.getFactory());
         register(PreventTradePower.getFactory());
+        register(FadingModelColorPower.getFactory());
     }
 
     private static void register(PowerFactory<?> p) {

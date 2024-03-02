@@ -11,7 +11,9 @@
   "client": [
     "BipedEntityModelMixin",
     "DisableKeysPowerMixin",
-    "DisableMousePowerMixin"
+    "DisableMousePowerMixin",
+    "LivingEntityRendererMixin",
+    "PlayerEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
